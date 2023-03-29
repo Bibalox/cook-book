@@ -26,7 +26,8 @@ defineProps({
   height: 900px;
   overflow: hidden;
   position: absolute;
-  z-index: 0;
+  top: 0;
+  z-index: -1;
 
   &__image {
     height: 100%;

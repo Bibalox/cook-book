@@ -4,11 +4,11 @@ import BackgroundImage from '../components/BackgroundImage.vue';
 
 <template>
   <main class="home">
+    <span>Hello world!</span>
     <background-image
       src="/home-background.jpeg"
       blurry
     />
-    <span>Hello world!</span>
   </main>
 </template>
 

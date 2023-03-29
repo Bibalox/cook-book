@@ -1,5 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import './variables/colors.scss'
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import { RouterView } from 'vue-router'
 
 <style lang="scss">
   body {
+    background-color: var(--grey-solid-10);
     margin: 0;
     padding: 0;
     height: 100vh;
