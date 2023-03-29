@@ -1,10 +1,20 @@
 <script setup>
+import BackgroundImage from '../components/BackgroundImage.vue';
 </script>
 
 <template>
-  <main>
+  <main class="home">
+    <background-image
+      src="/home-background.jpeg"
+      blurry
+    />
     <span>Hello world!</span>
   </main>
 </template>
 
-<script lang="scss"></script>
+<style lang="scss">
+  .home {
+    height: 100%;
+    position: relative;
+  }
+</style>
