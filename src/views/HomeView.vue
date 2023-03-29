@@ -1,10 +1,21 @@
 <script setup>
-import BackgroundImage from '../components/BackgroundImage.vue';
+import { ref } from 'vue'
+import BackgroundImage from '../components/BackgroundImage.vue'
+import SegmentedControls from '../components/SegmentedControls.vue'
+
+const activeFilter = ref(1)
+
+const changeActiveFilter = control => {
+  activeFilter.value = control
+}
 </script>
 
 <template>
-  <main class="home title-lg">
-    <span>Hello world!</span>
+  <main class="home">
+    <segmented-controls
+      :active-control="activeFilter"
+      @click-on-control="(control) => changeActiveFilter(control)"
+    />
     <background-image
       src="/home-background.jpeg"
       blurry
@@ -15,9 +26,11 @@ import BackgroundImage from '../components/BackgroundImage.vue';
 <style lang="scss">
   .home {
     align-items: center;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding: 72px 56px 56px;
     position: relative;
   }
 </style>
