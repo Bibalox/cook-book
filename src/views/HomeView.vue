@@ -6,3 +6,5 @@
     <span>Hello world!</span>
   </main>
 </template>
+
+<script lang="scss"></script>
