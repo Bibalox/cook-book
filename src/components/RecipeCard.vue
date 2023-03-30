@@ -46,15 +46,20 @@ defineProps({
 .recipe-card {
   border-radius: 12px;
   cursor: pointer;
-  height: 200px;
+  height: 240px;
   overflow: hidden;
   position: relative;
   transition: box-shadow .2s;
   width: 100%;
 
+  @media (max-width: 1000px) {
+    border-radius: 8px;
+    height: 200px;
+  }
 
   @media (max-width: 600px) {
     border-radius: 8px;
+    height: 144px;
   }
 
   &:hover {

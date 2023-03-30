@@ -1,11 +1,14 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { reactive, computed } from 'vue'
 
 import BackgroundImage from '../components/BackgroundImage.vue'
 import SegmentedControls from '../components/SegmentedControls.vue'
 import RecipeCard from '../components/RecipeCard.vue'
 
-const activeFilter = ref(0)
+const activeFilter = reactive({
+  id: 0,
+  type: 'Tout'
+})
 
 const recipes = reactive([
   {
@@ -67,14 +70,31 @@ const recipes = reactive([
 ])
 
 const changeActiveFilter = control => {
-  activeFilter.value = control
+  activeFilter.id = control
+  switch (control) {
+    case 0:
+      activeFilter.type = 'Tout'
+      break
+    case 1:
+      activeFilter.type = 'Salé'
+      break
+    case 2:
+      activeFilter.type = 'Sucré'
+      break
+    default:
+      activeFilter.type = 'Tout'
+  }
 }
+
+const filteredRecipes = computed(() => {
+  return recipes.filter(recipe => activeFilter.type === 'Tout' || recipe.type === activeFilter.type)
+})
 </script>
 
 <template>
   <main class="home-view">
     <segmented-controls
-      :active-control="activeFilter"
+      :active-control="activeFilter.id"
       @click-on-control="(control) => changeActiveFilter(control)"
     />
     <background-image
@@ -83,7 +103,7 @@ const changeActiveFilter = control => {
     />
     <div class="home-view__recipe-grid">
       <recipe-card
-        v-for="recipe in recipes"
+        v-for="recipe in filteredRecipes"
         :key="recipe.id"
         :thumbnail="recipe.thumbnail"
         :to="recipe.to"
