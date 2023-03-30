@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import BackgroundImage from '../components/BackgroundImage.vue'
 import SegmentedControls from '../components/SegmentedControls.vue'
 
-const activeFilter = ref(1)
+const activeFilter = ref(0)
 
 const changeActiveFilter = control => {
   activeFilter.value = control
@@ -32,5 +32,6 @@ const changeActiveFilter = control => {
     min-height: 100%;
     padding: 72px 56px 56px;
     position: relative;
+    width: 100%;
   }
 </style>
