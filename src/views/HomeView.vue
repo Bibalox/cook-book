@@ -32,6 +32,5 @@ const changeActiveFilter = control => {
     min-height: 100%;
     padding: 72px 56px 56px;
     position: relative;
-    width: 100%;
   }
 </style>

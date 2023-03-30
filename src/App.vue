@@ -14,12 +14,10 @@ import './variables/fonts.scss'
     margin: 0;
     padding: 0;
     height: 100vh;
-    width: 100vw;
   }
 
   #app {
     height: 100%;
     min-height: 100vh;
-    width: 100%;
   } 
 </style>
