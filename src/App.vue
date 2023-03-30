@@ -22,17 +22,6 @@ import './variables/fonts.scss'
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
-  // .safe-area-cover {
-  //   background-color: rgba(0,0,0, .2);
-  //   -webkit-backdrop-filter: blur(10px);
-  //   backdrop-filter: blur(10px);
-  //   height: env(safe-area-inset-top);
-  //   position: fixed;
-  //   top: 0;
-  //   width: 100%;
-  //   z-index: 9999;
-  // }
-
   .safe-area-cover {
     background: linear-gradient(180deg, rgba(0, 0, 0, .25) 20%, rgba(0, 0, 0, .1) 60%, rgba(0, 0, 0, 0) 100%);
     //backdrop-filter: blur(10px);

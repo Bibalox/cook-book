@@ -3,6 +3,8 @@
 :root {
   font-family: 'Poppins', sans-serif;
   font-size: 10px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;
   user-select: none;
 }
 

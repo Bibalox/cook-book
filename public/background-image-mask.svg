@@ -1,9 +1,0 @@
-<svg width="500" height="500" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect id="mask" width="500" height="500" fill="url(#gradient)"/>
-  <defs>
-    <linearGradient id="gradient" x1="250" y1="0" x2="250" y2="500" gradientUnits="userSpaceOnUse">
-      <stop offset="0.65"/>
-      <stop offset="1" stop-opacity="0"/>
-    </linearGradient>
-  </defs>
-</svg>
