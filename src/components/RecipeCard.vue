@@ -52,6 +52,11 @@ defineProps({
   transition: box-shadow .2s;
   width: 100%;
 
+
+  @media (max-width: 600px) {
+    border-radius: 8px;
+  }
+
   &:hover {
     box-shadow: 0 0 0 6px var(--accent-solid-50);
   }

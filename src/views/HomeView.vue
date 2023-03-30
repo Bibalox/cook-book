@@ -1,11 +1,70 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 
 import BackgroundImage from '../components/BackgroundImage.vue'
 import SegmentedControls from '../components/SegmentedControls.vue'
 import RecipeCard from '../components/RecipeCard.vue'
 
 const activeFilter = ref(0)
+
+const recipes = reactive([
+  {
+    id: '1',
+    thumbnail: '/temp/cake-sale.jpeg',
+    to: 'recipe',
+    type: 'Salé',
+    name: 'Cake tomate basilic'
+  },
+  {
+    id: '2',
+    thumbnail: '/temp/creme-caramel.jpeg',
+    to: 'recipe',
+    type: 'Sucré',
+    name: 'Crème caramel'
+  },
+  {
+    id: '3',
+    thumbnail: '/temp/gauffres.jpeg',
+    to: 'recipe',
+    type: 'Sucré',
+    name: 'Gauffres'
+  },
+  {
+    id: '4',
+    thumbnail: '/temp/lasagnes-chevre.jpg',
+    to: 'recipe',
+    type: 'Salé',
+    name: 'Lasagnes chèvre épinards'
+  },
+  {
+    id: '5',
+    thumbnail: '/temp/oeuf-brioche.jpg',
+    to: 'recipe',
+    type: 'Salé',
+    name: 'Oeuf brioche'
+  },
+  {
+    id: '6',
+    thumbnail: '/temp/quiche-lorraine.jpeg',
+    to: 'recipe',
+    type: 'Salé',
+    name: 'Quiche lorraine'
+  },
+  {
+    id: '7',
+    thumbnail: '/temp/quiche-poireaux.jpg',
+    to: 'recipe',
+    type: 'Salé',
+    name: 'Quiche aux poireaux'
+  },
+  {
+    id: '8',
+    thumbnail: '/temp/risotto.jpeg',
+    to: 'recipe',
+    type: 'Salé',
+    name: 'Risotto aux poireaux'
+  }
+])
 
 const changeActiveFilter = control => {
   activeFilter.value = control
@@ -24,16 +83,12 @@ const changeActiveFilter = control => {
     />
     <div class="home-view__recipe-grid">
       <recipe-card
-        thumbnail="/temp/cake-sale.jpeg"
-        to="recipe"
-        type="Salé"
-        name="Cake tomate basilic"
-      />
-      <recipe-card
-        thumbnail="/temp/cake-sale.jpeg"
-        to="recipe"
-        type="Salé"
-        name="Cake tomate basilic"
+        v-for="recipe in recipes"
+        :key="recipe.id"
+        :thumbnail="recipe.thumbnail"
+        :to="recipe.to"
+        :type="recipe.type"
+        :name="recipe.name"
       />
     </div>
   </main>
@@ -45,10 +100,19 @@ const changeActiveFilter = control => {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 64px;
     min-height: 100%;
-    padding: calc(env(safe-area-inset-top) + 56px) 56px 56px;
+    padding: calc(env(safe-area-inset-top) + 78px) 56px 78px;
     position: relative;
+
+    @media (max-width: 1000px) {
+      padding: calc(env(safe-area-inset-top) + 56px) 56px 56px;
+    }
+
+    @media (max-width: 600px) {
+      padding: calc(env(safe-area-inset-top) + 48px) 8px 48px;
+      gap: 48px;
+    }
 
     &__recipe-grid {
       border-radius: 28px;
@@ -63,6 +127,12 @@ const changeActiveFilter = control => {
       max-width: 900px;
       padding: 24px;
       width: 100%;
+
+      @media (max-width: 600px) {
+        border-radius: 20px;
+        gap: 16px;
+        padding: 16px;
+      }
     }
   }
 </style>
