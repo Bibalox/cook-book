@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import BackgroundImage from '../components/BackgroundImage.vue'
 import SegmentedControls from '../components/SegmentedControls.vue'
 
-const activeFilter = ref(0)
+const activeFilter = ref(1)
 
 const changeActiveFilter = control => {
   activeFilter.value = control
