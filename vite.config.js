@@ -10,6 +10,9 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
       includeAssets: [
         '/icons/favicon-32x32.png',
         '/icons/apple-touch-icon.png',
@@ -19,6 +22,7 @@ export default defineConfig({
         name: 'Cook book',
         short_name: 'CookBook',
         description: 'Un moyen simple de conserver mes recettes préférées',
+        display: 'fullscreen',
         theme_color: '#FAFAFA',
         icons: [
           {
