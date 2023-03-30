@@ -122,7 +122,7 @@ const filteredRecipes = computed(() => {
   flex-direction: column;
   gap: 64px;
   min-height: 100%;
-  padding: calc(env(safe-area-inset-top) + 78px) 56px 78px;
+  padding: calc(env(safe-area-inset-top) + 80px) 56px 78px;
   position: relative;
 
   @media (max-width: 1000px) {
