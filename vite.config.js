@@ -19,8 +19,8 @@ export default defineConfig({
         '/icons/safari-pinned-tab.svg'
       ],
       manifest: {
-        name: 'Cook book',
-        short_name: 'CookBook',
+        name: 'Cook Book',
+        short_name: 'Cook Book',
         description: 'Un moyen simple de conserver mes recettes préférées',
         display: 'fullscreen',
         theme_color: '#FAFAFA',
