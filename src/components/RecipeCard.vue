@@ -59,7 +59,7 @@ defineProps({
 
   @media (max-width: 600px) {
     border-radius: 8px;
-    height: 144px;
+    height: 128px;
   }
 
   &:hover {

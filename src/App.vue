@@ -18,7 +18,7 @@ import './variables/fonts.scss'
   }
 
   button, a {
-    touch-action: none;
+    //touch-action: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 

@@ -130,7 +130,7 @@ const filteredRecipes = computed(() => {
     }
 
     @media (max-width: 600px) {
-      padding: calc(env(safe-area-inset-top) + 48px) 24px 48px;
+      padding: calc(env(safe-area-inset-top) + 48px) 16px 48px;
       gap: 48px;
     }
 
