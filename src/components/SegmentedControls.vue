@@ -18,7 +18,7 @@ defineEmits(['clickOnControl'])
           `segmented-controls__active-marker--position-${activeControl}`
         ]"
       />
-      <span
+      <button
         :class="[
           'segmented-controls__control',
           'label-md',
@@ -27,8 +27,8 @@ defineEmits(['clickOnControl'])
         @click="$emit('clickOnControl', 0)"
       >
         Tout
-      </span>
-      <span
+      </button>
+      <button
         :class="[
           'segmented-controls__control',
           'label-md',
@@ -37,8 +37,8 @@ defineEmits(['clickOnControl'])
         @click="$emit('clickOnControl', 1)"
       >
         Salé
-      </span>
-      <span
+      </button>
+      <button
         :class="[
           'segmented-controls__control',
           'label-md',
@@ -47,7 +47,7 @@ defineEmits(['clickOnControl'])
         @click="$emit('clickOnControl', 2)"
       >
         Sucré
-      </span>
+      </button>
     </div>
   </div>
 </template>
@@ -97,11 +97,14 @@ defineEmits(['clickOnControl'])
 
   &__control {
     align-items: center;
+    background-color: transparent;
+    border: none;
     color: var(--grey-solid-80);
     cursor: pointer;
     display: flex;
     height: 100%;
     justify-content: center;
+    outline: none;
     transition: color .2s ease-out .1s;
     width: calc(100% / 3);
     z-index: 20;

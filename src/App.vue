@@ -16,6 +16,11 @@ import './variables/fonts.scss'
     height: 100vh;
   }
 
+  button, a {
+    touch-action: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
   #app {
     height: 100%;
     min-height: 100vh;
