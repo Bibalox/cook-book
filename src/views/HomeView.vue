@@ -93,15 +93,15 @@ const filteredRecipes = computed(() => {
 
 <template>
   <main class="home-view">
-    <segmented-controls
-      :active-control="activeFilter.id"
-      @click-on-control="(control) => changeActiveFilter(control)"
-    />
     <background-image
       src="/images/home-background.jpeg"
       blurry
     />
-    <div class="home-view__recipe-grid">
+    <segmented-controls
+      :active-control="activeFilter.id"
+      @click-on-control="(control) => changeActiveFilter(control)"
+    />
+    <section class="home-view__recipe-grid">
       <recipe-card
         v-for="recipe in filteredRecipes"
         :key="recipe.id"
@@ -110,49 +110,49 @@ const filteredRecipes = computed(() => {
         :type="recipe.type"
         :name="recipe.name"
       />
-    </div>
+    </section>
   </main>
 </template>
 
 <style lang="scss">
-  .home-view {
-    align-items: center;
+.home-view {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  min-height: 100%;
+  padding: calc(env(safe-area-inset-top) + 78px) 56px 78px;
+  position: relative;
+
+  @media (max-width: 1000px) {
+    padding: calc(env(safe-area-inset-top) + 56px) 56px 56px;
+  }
+
+  @media (max-width: 600px) {
+    padding: calc(env(safe-area-inset-top) + 24px) 16px 24px;
+    gap: 32px;
+  }
+
+  &__recipe-grid {
+    border-radius: 28px;
+    background-color: var(--base-50);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 64px;
-    min-height: 100%;
-    padding: calc(env(safe-area-inset-top) + 78px) 56px 78px;
-    position: relative;
-
-    @media (max-width: 1000px) {
-      padding: calc(env(safe-area-inset-top) + 56px) 56px 56px;
-    }
+    gap: 24px;
+    max-width: 900px;
+    padding: 24px;
+    width: 100%;
 
     @media (max-width: 600px) {
-      padding: calc(env(safe-area-inset-top) + 48px) 16px 48px;
-      gap: 48px;
-    }
-
-    &__recipe-grid {
-      border-radius: 28px;
-      background-color: var(--base-50);
-      -webkit-backdrop-filter: blur(18px);
-      backdrop-filter: blur(18px);
-      box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.2);
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      max-width: 900px;
-      padding: 24px;
-      width: 100%;
-
-      @media (max-width: 600px) {
-        border-radius: 20px;
-        gap: 16px;
-        padding: 16px;
-      }
+      border-radius: 20px;
+      gap: 16px;
+      padding: 16px;
     }
   }
+}
 </style>
