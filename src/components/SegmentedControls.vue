@@ -56,6 +56,7 @@ defineEmits(['clickOnControl'])
 .segmented-controls {
   border-radius: 25px;
   background-color: var(--base-50);
+  -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
