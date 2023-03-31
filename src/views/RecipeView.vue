@@ -3,15 +3,40 @@ import { reactive } from 'vue'
 
 import BackgroundImage from '../components/BackgroundImage.vue';
 import BackButton from '../components/BackButton.vue'
-import IngredientItem from '../components/IngredientItem.vue'
+import IngredientList from '../components/IngredientList.vue';
 import RecipeProcedure from '../components/RecipeProcedure.vue';
 
-const ingredientList = reactive([
+const ingredients = reactive([
   '5 oeufs',
   '1/2l de lait',
   '100g de sucre (pour le caramel)',
   '80g de sucre (pour la crème)',
   '20g de sucre vanillé'
+])
+
+const procedure = reactive([
+  {
+    title: 'Caramel',
+    paragraphs: [
+      'Verser le sucre dans une casserole et couvrir d’eau. Faire chauffer à feu doux jusqu’à obtenir un caramel liquide avec une belle coloration.'
+    ]
+  },
+  {
+    title: 'Crème',
+    paragraphs: [
+      'Verser le lait dans une casserole et faire chauffer jusqu’à 40°C environ.',
+      'Verser le sucre, le sucre vanillé et les oeufs dans un bol et mélanger au fouet. Verser ensuite le lait et mélanger le tout.'
+    ]
+  },
+  {
+    title: 'Montage et cuisson',
+    paragraphs: [
+      'Verser le caramel au fond des ramequins, le laisser refroidir au frais avant de verser la crème.',
+      'Verser la crème dans les ramequins (à la louche pour éviter de mélanger le caramel.',
+      'Faire cuire 40 minutes au bain marie (l’eau à mi-hauteur des ramequins) dans un four à 150°C.',
+      'Faire refroidir avant de démouler.'
+    ]
+  }
 ])
 </script>
 
@@ -23,18 +48,9 @@ const ingredientList = reactive([
       <h1 class="recipe-view__title recipe-view__title--large title-lg">
         Crème caramel
       </h1>
-      <section class="recipe-view__section">
-        <aside class="recipe-view__ingredient-list">
-          <h2 class="title-md">
-            Ingrédients
-          </h2>
-          <ingredient-item
-            v-for="(ingredient, index) in ingredientList"
-            :key="index"
-            :label="ingredient"
-          />
-        </aside>
-        <recipe-procedure />
+      <section class="recipe-view__content">
+        <ingredient-list :list="ingredients" />
+        <recipe-procedure :procedure="procedure" />
       </section>
     </div>
   </main>
@@ -44,7 +60,6 @@ const ingredientList = reactive([
 .recipe-view {
   align-items: center;
   box-sizing: border-box;
-  color: var(--grey-solid-80);
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -86,7 +101,7 @@ const ingredientList = reactive([
     color: var(--accent-solid-50);
   }
 
-  &__section {
+  &__content {
     display: flex;
     gap: 72px;
 
@@ -97,15 +112,6 @@ const ingredientList = reactive([
     @media (max-width: 700px) {
       flex-direction: column;
       gap: 24px;
-    }
-  }
-
-  &__ingredient-list {
-    flex-shrink: 0;
-    width: 200px;
-
-    @media (max-width: 700px) {
-      width: 100%;
     }
   }
 }
