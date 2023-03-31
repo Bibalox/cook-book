@@ -2,6 +2,13 @@
 import { RouterView } from 'vue-router'
 import './variables/colors.scss'
 import './variables/fonts.scss'
+
+try {
+  await navigator.wakeLock.request('screen')
+  console.info('Wake lock activated')
+} catch (err) {
+  console.error('Wakelock cannot be activated')
+}
 </script>
 
 <template>
