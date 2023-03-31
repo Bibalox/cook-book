@@ -1,6 +1,7 @@
 <script setup>
 import BackgroundImage from '../components/BackgroundImage.vue';
 import BackButton from '../components/BackButton.vue'
+import IngredientItem from '../components/IngredientItem.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import BackButton from '../components/BackButton.vue'
           <h2 class="recipe-view__title recipe-view__title--medium title-md">
             Ingrédients
           </h2>
+          <ingredient-item />
         </aside>
         <article class="recipe-view__procedure">
           <section class="recipe-view__step">
