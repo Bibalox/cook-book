@@ -9,7 +9,7 @@ const switchState = () => {
 </script>
 
 <template>
-  <div
+  <button
     :class="[
       'ingredient-item',
       { 'ingredient-item--checked' : checked }
@@ -27,16 +27,19 @@ const switchState = () => {
       </svg>
     </div>
     <span class="ingredient-item__label">Check me</span>
-  </div>
+  </button>
 </template>
 
 <style lang="scss">
 .ingredient-item {
   align-items: center;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
   display: flex;
-  height: 78px;
   gap: 24px;
+  height: 78px;
+  width: 100%;
 
   &--checked {
     .ingredient-item__checkbox {
