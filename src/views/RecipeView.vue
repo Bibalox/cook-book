@@ -1,7 +1,18 @@
 <script setup>
+import { reactive } from 'vue'
+
 import BackgroundImage from '../components/BackgroundImage.vue';
 import BackButton from '../components/BackButton.vue'
 import IngredientItem from '../components/IngredientItem.vue'
+import RecipeProcedure from '../components/RecipeProcedure.vue';
+
+const ingredientList = reactive([
+  '5 oeufs',
+  '1/2l de lait',
+  '100g de sucre (pour le caramel)',
+  '80g de sucre (pour la crème)',
+  '20g de sucre vanillé'
+])
 </script>
 
 <template>
@@ -14,33 +25,16 @@ import IngredientItem from '../components/IngredientItem.vue'
       </h1>
       <section class="recipe-view__section">
         <aside class="recipe-view__ingredient-list">
-          <h2 class="recipe-view__title recipe-view__title--medium title-md">
+          <h2 class="title-md">
             Ingrédients
           </h2>
-          <ingredient-item label="Oignons" />
-          <ingredient-item label="Crème fraiche Crème fraiche Crème fraiche" />
+          <ingredient-item
+            v-for="(ingredient, index) in ingredientList"
+            :key="index"
+            :label="ingredient"
+          />
         </aside>
-        <article class="recipe-view__procedure">
-          <section class="recipe-view__step">
-            <h2 class="recipe-view__title recipe-view__title--medium title-md">
-              Caramel
-            </h2>
-            <p class="recipe-view__paragraph paragraph">
-              Verser le sucre dans une casserole et couvrir d’eau. Faire chauffer à feu doux jusqu’à obtenir un caramel liquide avec une belle coloration.
-            </p>
-          </section>
-          <section class="recipe-view__step">
-            <h2 class="recipe-view__title recipe-view__title--medium title-md">
-              Crème
-            </h2>
-            <p class="recipe-view__paragraph paragraph">
-              Verser le lait dans une casserole et faire chauffer jusqu’à 40°C environ.
-            </p>
-            <p class="recipe-view__paragraph paragraph">
-              Verser le sucre, le sucre vanillé et les oeufs dans un bol et mélanger au fouet. Verser ensuite le lait et mélanger le tout.
-            </p>
-          </section>
-        </article>
+        <recipe-procedure />
       </section>
     </div>
   </main>
@@ -50,6 +44,7 @@ import IngredientItem from '../components/IngredientItem.vue'
 .recipe-view {
   align-items: center;
   box-sizing: border-box;
+  color: var(--grey-solid-80);
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -88,19 +83,10 @@ import IngredientItem from '../components/IngredientItem.vue'
   }
 
   &__title {
-    margin: 0;
-
-    &--large {
-      color: var(--accent-solid-50);
-    }
-  }
-
-  &__paragraph {
-    margin: 0;
+    color: var(--accent-solid-50);
   }
 
   &__section {
-    color: var(--grey-solid-80);
     display: flex;
     gap: 72px;
 
@@ -122,21 +108,5 @@ import IngredientItem from '../components/IngredientItem.vue'
       width: 100%;
     }
   }
-
-  &__procedure {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-
-    @media (max-width: 700px) {
-      gap: 24px;
-    }
-  }
-
-  &__step {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  } 
 }
 </style>

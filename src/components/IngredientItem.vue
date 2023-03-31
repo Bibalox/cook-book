@@ -51,7 +51,7 @@ const switchState = () => {
   display: flex;
   gap: 24px;
   min-height: 78px;
-  padding: 8px 0;
+  padding: 24px 0;
   width: 100%;
 
   &--checked {
