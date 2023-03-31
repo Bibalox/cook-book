@@ -17,7 +17,8 @@ import IngredientItem from '../components/IngredientItem.vue'
           <h2 class="recipe-view__title recipe-view__title--medium title-md">
             Ingrédients
           </h2>
-          <ingredient-item />
+          <ingredient-item label="Oignons" />
+          <ingredient-item label="Crème fraiche Crème fraiche Crème fraiche" />
         </aside>
         <article class="recipe-view__procedure">
           <section class="recipe-view__step">
@@ -59,7 +60,7 @@ import IngredientItem from '../components/IngredientItem.vue'
     padding: calc(env(safe-area-inset-top) + 32px) 56px 32px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     padding: calc(env(safe-area-inset-top) + 8px) 16px 16px;
     gap: 48px;
   }
@@ -79,7 +80,7 @@ import IngredientItem from '../components/IngredientItem.vue'
     padding: 48px 56px;
     width: 100%;
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       border-radius: 20px;
       gap: 24px;
       padding: 32px;
@@ -107,7 +108,7 @@ import IngredientItem from '../components/IngredientItem.vue'
       gap: 56px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       flex-direction: column;
       gap: 24px;
     }
@@ -116,6 +117,10 @@ import IngredientItem from '../components/IngredientItem.vue'
   &__ingredient-list {
     flex-shrink: 0;
     width: 200px;
+
+    @media (max-width: 700px) {
+      width: 100%;
+    }
   }
 
   &__procedure {
@@ -123,7 +128,7 @@ import IngredientItem from '../components/IngredientItem.vue'
     flex-direction: column;
     gap: 48px;
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       gap: 24px;
     }
   }

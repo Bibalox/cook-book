@@ -72,7 +72,7 @@ defineEmits(['clickOnControl'])
     top: calc(env(safe-area-inset-top) + 56px);
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     top: calc(env(safe-area-inset-top) + 24px);
   }
 

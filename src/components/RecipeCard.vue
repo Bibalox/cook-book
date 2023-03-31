@@ -57,7 +57,7 @@ defineProps({
     height: 200px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     border-radius: 8px;
     height: 128px;
   }

@@ -1,6 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 
+defineProps({
+  label: {
+    type: String,
+    required: true
+  }
+})
+
 const checked = ref(false)
 
 const switchState = () => {
@@ -26,7 +33,10 @@ const switchState = () => {
         <polyline points="2 9 6 13 14 4" />
       </svg>
     </div>
-    <span class="ingredient-item__label">Check me</span>
+    <span
+      class="ingredient-item__label paragraph"
+      v-text="label"
+    />
   </button>
 </template>
 
@@ -35,10 +45,13 @@ const switchState = () => {
   align-items: center;
   background-color: transparent;
   border: none;
+  border-bottom: 1px solid var(--grey-transparent-40);
+  box-sizing: border-box;
   cursor: pointer;
   display: flex;
   gap: 24px;
-  height: 78px;
+  min-height: 78px;
+  padding: 8px 0;
   width: 100%;
 
   &--checked {
@@ -63,6 +76,7 @@ const switchState = () => {
     border-radius: 50%;
     box-shadow: inset 0 0 0 1.5px #808080;
     display: flex;
+    flex-shrink: 0;
     justify-content: center;
     height: 30px;
     transition: all .2s;
@@ -84,11 +98,8 @@ const switchState = () => {
   }
 
   &__label {
-    color: #2B2B2B;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    color: var(--grey-solid-80);
+    text-align: left;
   }
 }
 
