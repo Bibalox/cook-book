@@ -35,6 +35,7 @@ import { RouterLink } from 'vue-router';
   border-radius: 16px;
   box-sizing: border-box;
   display: flex;
+  flex-shrink: 0;
   gap: 8px;
   height: 32px;
   padding: 0 16px 0 8px;
