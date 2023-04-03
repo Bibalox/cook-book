@@ -59,10 +59,6 @@ const switchState = () => {
       animation: glow 1s;
       background-color: #FF4036;
       box-shadow: none;
-
-      &:hover {
-        background-color: #E63329;
-      }
     }
 
     .ingredient-item__check {
@@ -81,10 +77,6 @@ const switchState = () => {
     height: 30px;
     transition: all .2s;
     width: 30px;
-
-    &:hover {
-      background-color: rgba(0,0,0, .1);
-    }
   }
   
   &__check {

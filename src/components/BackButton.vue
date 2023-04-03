@@ -42,10 +42,6 @@ import { RouterLink } from 'vue-router';
   text-decoration: none;
   transition: background-color .2s ease-in-out;
 
-  &:hover {
-    background-color: var(--grey-transparent-40);
-  }
-
   &__icon {
     stroke: var(--grey-solid-80);
   }

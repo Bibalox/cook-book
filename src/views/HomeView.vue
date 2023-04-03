@@ -2,7 +2,6 @@
 import { reactive, computed } from 'vue'
 import fetchData from '../utils/fetchData.js'
 
-import BackgroundImage from '../components/BackgroundImage.vue'
 import SegmentedControls from '../components/SegmentedControls.vue'
 import RecipeCard from '../components/RecipeCard.vue'
 
@@ -67,10 +66,6 @@ init()
 
 <template>
   <main class="home-view">
-    <background-image
-      src="/images/home-background.jpeg"
-      blurry
-    />
     <segmented-controls
       :active-control="activeFilter.id"
       @click-on-control="(control) => changeActiveFilter(control)"

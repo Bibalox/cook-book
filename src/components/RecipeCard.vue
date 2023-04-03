@@ -62,10 +62,6 @@ defineProps({
     height: 128px;
   }
 
-  &:hover {
-    box-shadow: 0 0 0 6px var(--accent-solid-50);
-  }
-
   &__thumbnail {
     object-fit: cover;
     height: 100%;
