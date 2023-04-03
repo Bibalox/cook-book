@@ -65,15 +65,15 @@ const procedure = reactive([
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  padding: calc(env(safe-area-inset-top) + 56px) 56px 56px;
+  padding: calc(env(safe-area-inset-top) + 56px) 56px calc(env(safe-area-inset-bottom) + 56px);
   position: relative;
 
   @media (max-width: 1000px) {
-    padding: calc(env(safe-area-inset-top) + 32px) 56px 32px;
+    padding: calc(env(safe-area-inset-top) + 32px) 56px calc(env(safe-area-inset-bottom) + 32px);
   }
 
   @media (max-width: 700px) {
-    padding: calc(env(safe-area-inset-top) + 8px) 16px 8px;
+    padding: calc(env(safe-area-inset-top) + 8px) 16px calc(env(safe-area-inset-bottom) + 8px);
     gap: 48px;
   }
 
