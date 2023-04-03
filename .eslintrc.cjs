@@ -26,6 +26,7 @@ module.exports = {
     'vue/no-reserved-keys': ['error', {
       'reserved': ['_path'],
       'groups': ['data']
-    }]
+    }],
+    'vue/no-v-html': 'off'
   }
 }

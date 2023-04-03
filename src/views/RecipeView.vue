@@ -1,56 +1,76 @@
 <script setup>
 import { reactive } from 'vue'
+import { useRoute } from 'vue-router'
+import fetchData from '../utils/fetchData.js'
 
 import BackgroundImage from '../components/BackgroundImage.vue';
 import BackButton from '../components/BackButton.vue'
 import IngredientList from '../components/IngredientList.vue';
 import RecipeProcedure from '../components/RecipeProcedure.vue';
 
-const ingredients = reactive([
-  '5 oeufs',
-  '1/2l de lait',
-  '100g de sucre (pour le caramel)',
-  '80g de sucre (pour la crème)',
-  '20g de sucre vanillé'
-])
+const recipe = reactive({
+  ready: false
+})
 
-const procedure = reactive([
-  {
-    title: 'Caramel',
-    paragraphs: [
-      'Verser le sucre dans une casserole et couvrir d’eau. Faire chauffer à feu doux jusqu’à obtenir un caramel liquide avec une belle coloration.'
-    ]
-  },
-  {
-    title: 'Crème',
-    paragraphs: [
-      'Verser le lait dans une casserole et faire chauffer jusqu’à 40°C environ.',
-      'Verser le sucre, le sucre vanillé et les oeufs dans un bol et mélanger au fouet. Verser ensuite le lait et mélanger le tout.'
-    ]
-  },
-  {
-    title: 'Montage et cuisson',
-    paragraphs: [
-      'Verser le caramel au fond des ramequins, le laisser refroidir au frais avant de verser la crème.',
-      'Verser la crème dans les ramequins (à la louche pour éviter de mélanger le caramel.',
-      'Faire cuire 40 minutes au bain marie (l’eau à mi-hauteur des ramequins) dans un four à 150°C.',
-      'Faire refroidir avant de démouler.'
-    ]
+const route = useRoute()
+
+const query = `{
+  receipe(id: "${route.params.id}") {
+    title
+    thumbnail {
+      url
+    }
+    ingredients
+    procedure {
+      json
+    }
   }
-])
+}`
+
+const init = async () => {
+  try {
+    const response = await fetchData(query, 'receipe')
+    Object.assign(recipe, {
+      ready: true,
+      thumbnail: response.thumbnail.url,
+      title: response.title,
+      ingredients: response.ingredients,
+      procedure: buildProcedure(response.procedure['json']['content'])
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const buildProcedure = content => {
+  let procedure = ''
+
+  content.forEach(node => {
+    if (node['nodeType'] === 'heading-2') {
+      procedure += `<h2 class="title-md">${node['content'][0]['value']}</h2>`
+    } else {
+      procedure += `<p class="paragraph">${node['content'][0]['value']}</p>`
+    }
+  })
+
+  return procedure
+}
+
+init()
 </script>
 
 <template>
-  <main class="recipe-view">
-    <background-image src="/temp/creme-caramel.jpeg" />
+  <main v-if="recipe.ready" class="recipe-view">
+    <background-image :src="recipe.thumbnail" />
     <div class="recipe-view__recipe-card">
       <back-button />
-      <h1 class="recipe-view__title recipe-view__title--large title-lg">
-        Crème caramel
-      </h1>
+      <h1
+        class="recipe-view__title recipe-view__title--large title-lg"
+        v-text="recipe.title"
+      />
       <section class="recipe-view__content">
-        <ingredient-list :list="ingredients" />
-        <recipe-procedure :procedure="procedure" />
+        <ingredient-list :list="recipe.ingredients" />
+        <recipe-procedure :procedure="recipe.procedure" />
       </section>
     </div>
   </main>

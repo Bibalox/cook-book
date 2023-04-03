@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, computed } from 'vue'
+import fetchData from '../utils/fetchData.js'
 
 import BackgroundImage from '../components/BackgroundImage.vue'
 import SegmentedControls from '../components/SegmentedControls.vue'
@@ -10,64 +11,10 @@ const activeFilter = reactive({
   type: 'Tout'
 })
 
-const recipes = reactive([
-  {
-    id: '1',
-    thumbnail: '/temp/cake-sale.jpeg',
-    to: 'recipe',
-    type: 'Salé',
-    name: 'Cake tomate basilic'
-  },
-  {
-    id: '2',
-    thumbnail: '/temp/creme-caramel.jpeg',
-    to: 'recipe',
-    type: 'Sucré',
-    name: 'Crème caramel'
-  },
-  {
-    id: '3',
-    thumbnail: '/temp/gauffres.jpeg',
-    to: 'recipe',
-    type: 'Sucré',
-    name: 'Gauffres'
-  },
-  {
-    id: '4',
-    thumbnail: '/temp/lasagnes-chevre.jpg',
-    to: 'recipe',
-    type: 'Salé',
-    name: 'Lasagnes chèvre épinards'
-  },
-  {
-    id: '5',
-    thumbnail: '/temp/oeuf-brioche.jpg',
-    to: 'recipe',
-    type: 'Salé',
-    name: 'Oeuf brioche'
-  },
-  {
-    id: '6',
-    thumbnail: '/temp/quiche-lorraine.jpeg',
-    to: 'recipe',
-    type: 'Salé',
-    name: 'Quiche lorraine'
-  },
-  {
-    id: '7',
-    thumbnail: '/temp/quiche-poireaux.jpg',
-    to: 'recipe',
-    type: 'Salé',
-    name: 'Quiche aux poireaux'
-  },
-  {
-    id: '8',
-    thumbnail: '/temp/risotto.jpeg',
-    to: 'recipe',
-    type: 'Salé',
-    name: 'Risotto aux poireaux'
-  }
-])
+const recipeList = reactive({
+  ready: false,
+  value: []
+})
 
 const changeActiveFilter = control => {
   activeFilter.id = control
@@ -86,9 +33,36 @@ const changeActiveFilter = control => {
   }
 }
 
+const query = `{
+  receipeCollection {
+    items {
+      sys {
+        id
+      }
+      title
+      type
+      thumbnail {
+        url
+      }
+    }
+  }
+}`
+
 const filteredRecipes = computed(() => {
-  return recipes.filter(recipe => activeFilter.type === 'Tout' || recipe.type === activeFilter.type)
+  return recipeList.value.filter(recipe => activeFilter.type === 'Tout' || recipe.type === activeFilter.type)
 })
+
+const init = async () => {
+  try {
+    const response = await fetchData(query, 'receipeCollection')
+    recipeList.value = response.items
+    recipeList.ready = true
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+init()
 </script>
 
 <template>
@@ -101,16 +75,18 @@ const filteredRecipes = computed(() => {
       :active-control="activeFilter.id"
       @click-on-control="(control) => changeActiveFilter(control)"
     />
-    <section class="home-view__recipe-grid">
-      <recipe-card
-        v-for="recipe in filteredRecipes"
-        :key="recipe.id"
-        :thumbnail="recipe.thumbnail"
-        :to="recipe.to"
-        :type="recipe.type"
-        :name="recipe.name"
-      />
-    </section>
+    <transition>
+      <section v-if="recipeList.ready" class="home-view__recipe-grid">
+        <recipe-card
+          v-for="recipe in filteredRecipes"
+          :key="recipe.sys.id"
+          :title="recipe.title"
+          :type="recipe.type"
+          :thumbnail="recipe.thumbnail.url"
+          :to="`/recipe/${recipe.sys.id}`"
+        />
+      </section>
+    </transition>
   </main>
 </template>
 

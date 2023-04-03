@@ -14,7 +14,7 @@ defineProps({
     type: String,
     required: true
   },
-  name: {
+  title: {
     type: String,
     required: true
   }
@@ -34,8 +34,8 @@ defineProps({
           v-text="type"
         />
         <span
-          class="recipe-card__name label-lg"
-          v-text="name"
+          class="recipe-card__title label-lg"
+          v-text="title"
         />
       </div>
     </div>
@@ -90,7 +90,7 @@ defineProps({
     color: var(--accent-solid-50);
   }
 
-  &__name {
+  &__title {
     color: var(--grey-solid-10);
   }
 }
