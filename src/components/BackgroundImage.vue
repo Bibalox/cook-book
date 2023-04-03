@@ -23,7 +23,7 @@ defineProps({
 
 <style lang="scss">
 .background-image {
-  height: 900px;
+  max-height: 900px;
   left: 0;
   overflow: hidden;
   position: absolute;

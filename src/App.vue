@@ -2,10 +2,16 @@
 import { RouterView } from 'vue-router'
 import './variables/colors.scss'
 import './variables/fonts.scss'
+
+import BackgroundImage from './components/BackgroundImage.vue'
 </script>
 
 <template>
   <div class="safe-area-cover" />
+  <background-image
+    src="/images/home-background.jpeg"
+    blurry
+  />
   <router-view v-slot="{ Component }">
     <transition mode="out-in">
       <component :is="Component" />
@@ -42,7 +48,7 @@ button, a {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .v-enter-from,
