@@ -33,7 +33,7 @@ const changeActiveFilter = control => {
 }
 
 const query = `{
-  receipeCollection {
+  receipeCollection(order: [title_ASC]) {
     items {
       sys {
         id
