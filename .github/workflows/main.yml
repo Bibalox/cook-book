@@ -23,7 +23,7 @@ jobs:
         FTP_SERVER: home696673610.1and1-data.host
         FTP_USERNAME: ${{ secrets.ftp_username }}
         FTP_PASSWORD: ${{ secrets.ftp_password }}
-        VITE_CONTENTFUL_SPACE_ID: ${{ secrets.env.vite_contentful_space_id }}
-        VITE_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.env.vite_contentful_access_token }}
+        VITE_CONTENTFUL_SPACE_ID: ${{ secrets.vite_contentful_space_id }}
+        VITE_CONTENTFUL_ACCESS_TOKEN: ${{ secrets.vite_contentful_access_token }}
         LOCAL_DIR: dist/
         REMOTE_DIR: cook-book/
