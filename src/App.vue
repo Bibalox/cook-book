@@ -1,13 +1,17 @@
 <script setup>
+import { ref } from 'vue'
 import { RouterView } from 'vue-router'
 import './variables/colors.scss'
 import './variables/fonts.scss'
 
 import BackgroundImage from './components/BackgroundImage.vue'
 
+const wakelockActivated = ref(false)
+
 const init = async () => {
   try {
     await navigator.wakeLock.request('screen')
+    wakelockActivated.value = true
     console.info('Screen wake lock activated')
   } catch (err) {
     console.error('Screen wake lock cannot be activated')
@@ -20,6 +24,7 @@ init()
 <template>
   <div class="safe-area-cover" />
   <background-image
+    v-if="wakelockActivated"
     src="/images/home-background.jpeg"
     blurry
   />
