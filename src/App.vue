@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import './variables/colors.scss'
 import './variables/fonts.scss'
@@ -18,7 +18,9 @@ const init = async () => {
   }
 }
 
-init()
+onMounted(() => {
+  init()
+})
 </script>
 
 <template>
