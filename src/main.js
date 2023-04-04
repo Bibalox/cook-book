@@ -14,9 +14,3 @@ if (darkTheme.matches) {
 } else {
   document.documentElement.setAttribute('data-theme', 'light')
 }
-
-try {
-  await navigator.wakeLock.request('screen')
-} catch (err) {
-  console.error('Wakelock cannot be activated')
-}

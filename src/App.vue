@@ -4,6 +4,17 @@ import './variables/colors.scss'
 import './variables/fonts.scss'
 
 import BackgroundImage from './components/BackgroundImage.vue'
+
+const init = async () => {
+  try {
+    await navigator.wakeLock.request('screen')
+    console.info('Screen wake lock activated')
+  } catch (err) {
+    console.error('Screen wake lock cannot be activated')
+  }
+}
+
+init()
 </script>
 
 <template>
