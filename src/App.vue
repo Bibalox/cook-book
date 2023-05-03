@@ -28,7 +28,6 @@ init()
 <style lang="scss">
 body {
   background-color: var(--grey-solid-10);
-  height: 100vh;
   margin: 0;
   overflow: hidden;
   padding: 0;
