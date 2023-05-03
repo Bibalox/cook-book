@@ -90,8 +90,9 @@ init()
   display: flex;
   flex-direction: column;
   gap: 64px;
-  min-height: 100%;
-  padding: calc(env(safe-area-inset-top) + 80px) 56px 78px;
+  height: 100%;
+  overflow-y: auto;
+  padding: calc(env(safe-area-inset-top) + 80px) 56px 80px;
   position: relative;
 
   @media (max-width: 1000px) {

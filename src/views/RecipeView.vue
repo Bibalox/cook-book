@@ -86,8 +86,7 @@ init()
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
   overflow: hidden;
   padding: calc(env(safe-area-inset-top) + $padding-x) 56px calc(env(safe-area-inset-bottom) + $padding-x);
   position: relative;

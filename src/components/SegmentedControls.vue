@@ -60,21 +60,14 @@ defineEmits(['clickOnControl'])
   backdrop-filter: blur(22px);
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
+  flex-shrink: 0;
   height: 50px;
   max-width: 360px;
   padding: 4px;
   position: sticky;
-  top: calc(env(safe-area-inset-top) + 80px);
+  top: 0;
   width: 100%;
   z-index: 5000;
-
-  @media (max-width: 1000px) {
-    top: calc(env(safe-area-inset-top) + 56px);
-  }
-
-  @media (max-width: 700px) {
-    top: calc(env(safe-area-inset-top) + 24px);
-  }
 
   &__wrapper {
     align-items: center;
