@@ -60,20 +60,22 @@ init()
 </script>
 
 <template>
-  <main v-if="recipe.ready" class="recipe-view">
-    <background-image :src="recipe.thumbnail" />
-    <div class="recipe-view__recipe-card">
-      <back-button />
-      <h1
-        class="recipe-view__title recipe-view__title--large title-lg"
-        v-text="recipe.title"
-      />
-      <section class="recipe-view__content">
-        <ingredient-list :list="recipe.ingredients" />
-        <recipe-procedure :procedure="recipe.procedure" />
-      </section>
-    </div>
-  </main>
+  <transition>
+    <main v-if="recipe.ready" class="recipe-view">
+      <background-image :src="recipe.thumbnail" />
+      <div class="recipe-view__recipe-card">
+        <back-button />
+        <h1
+          class="recipe-view__title recipe-view__title--large title-lg"
+          v-text="recipe.title"
+        />
+        <section class="recipe-view__content">
+          <ingredient-list :list="recipe.ingredients" />
+          <recipe-procedure :procedure="recipe.procedure" />
+        </section>
+      </div>
+    </main>
+  </transition>
 </template>
 
 <style lang="scss">
@@ -142,5 +144,15 @@ init()
       gap: 24px;
     }
   }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s .15s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

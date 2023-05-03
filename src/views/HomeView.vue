@@ -70,18 +70,16 @@ init()
       :active-control="activeFilter.id"
       @click-on-control="(control) => changeActiveFilter(control)"
     />
-    <transition>
-      <section v-if="recipeList.ready" class="home-view__recipe-grid">
-        <recipe-card
-          v-for="recipe in filteredRecipes"
-          :key="recipe.sys.id"
-          :title="recipe.title"
-          :type="recipe.type"
-          :thumbnail="recipe.thumbnail.url"
-          :to="`/recipe/${recipe.sys.id}`"
-        />
-      </section>
-    </transition>
+    <section v-if="recipeList.ready" class="home-view__recipe-grid">
+      <recipe-card
+        v-for="recipe in filteredRecipes"
+        :key="recipe.sys.id"
+        :title="recipe.title"
+        :type="recipe.type"
+        :thumbnail="recipe.thumbnail.url"
+        :to="`/recipe/${recipe.sys.id}`"
+      />
+    </section>
   </main>
 </template>
 
