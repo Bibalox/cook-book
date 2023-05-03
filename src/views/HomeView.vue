@@ -93,7 +93,6 @@ init()
   height: 100%;
   overflow-y: auto;
   padding: calc(env(safe-area-inset-top) + 80px) 56px 80px;
-  position: relative;
 
   @media (max-width: 1000px) {
     padding: calc(env(safe-area-inset-top) + 56px) 56px 56px;

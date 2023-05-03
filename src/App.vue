@@ -26,11 +26,17 @@ init()
 </template>
 
 <style lang="scss">
+html {
+  height: calc(100% + env(safe-area-inset-top));
+}
+
 body {
   background-color: var(--grey-solid-10);
   margin: 0;
-  overflow: hidden;
+  height: 100%;
   padding: 0;
+  position: fixed;
+  width: 100%;
 }
 
 button, a {
@@ -46,7 +52,6 @@ button, a {
 }
 
 #app {
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
 }
 </style>
