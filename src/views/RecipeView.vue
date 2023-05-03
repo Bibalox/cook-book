@@ -78,6 +78,8 @@ init()
 
 <style lang="scss">
 .recipe-view {
+  $padding-x: 56px;
+
   align-items: center;
   box-sizing: border-box;
   display: flex;
@@ -85,15 +87,17 @@ init()
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  padding: calc(env(safe-area-inset-top) + 56px) 56px calc(env(safe-area-inset-bottom) + 56px);
+  padding: calc(env(safe-area-inset-top) + $padding-x) 56px calc(env(safe-area-inset-bottom) + $padding-x);
   position: relative;
 
   @media (max-width: 1000px) {
-    padding: calc(env(safe-area-inset-top) + 32px) 56px calc(env(safe-area-inset-bottom) + 32px);
+    $padding-x: 32px;
+    padding: calc(env(safe-area-inset-top) + $padding-x) 56px calc(env(safe-area-inset-bottom) + $padding-x);
   }
 
   @media (max-width: 700px) {
-    padding: calc(env(safe-area-inset-top) + 8px) 16px calc(env(safe-area-inset-bottom) + 8px);
+    $padding-x: 16px;
+    padding: calc(env(safe-area-inset-top) + $padding-x) 16px calc(env(safe-area-inset-bottom) + $padding-x);
     gap: 48px;
   }
 
@@ -110,7 +114,7 @@ init()
     gap: 32px;
     flex: 1;
     max-width: 900px;
-    overflow-y: auto;
+    overflow: hidden auto;
     padding: 48px 56px;
     width: 100%;
 
