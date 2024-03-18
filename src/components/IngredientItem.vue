@@ -70,7 +70,7 @@ const switchState = () => {
     align-items: center;
     background-color: transparent;
     border-radius: 50%;
-    box-shadow: inset 0 0 0 1.5px #808080;
+    box-shadow: inset 0 0 0 2px #808080;
     display: flex;
     flex-shrink: 0;
     justify-content: center;
